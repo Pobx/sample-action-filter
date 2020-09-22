@@ -12,13 +12,17 @@ namespace sample_action_filter.Filters {
       var response = new MyResponse<object> ();
       response.Entities = result?.Value;
 
-      if (context.ModelState.IsValid && result is OkObjectResult) {
+      if (!context.ModelState.IsValid) {
+        response.Entities = null;
+        response.ErrorsMessage = result.Value as List<string>;
+        context.Result = new BadRequestObjectResult (response);
+      } else if (context.ModelState.IsValid && result is OkObjectResult) {
         context.Result = new OkObjectResult (response);
       } else if (context.ModelState.IsValid && result is CreatedResult) {
         context.Result = new CreatedResult ("", response);
       }
 
-      // result.Value = response;
+      result.Value = response;
       Console.WriteLine ("Hello from ResponseModelAttribute");
     }
 
