@@ -42,5 +42,26 @@ namespace sample_action_filter.Controllers {
 
     }
 
+    [HttpPost]
+    public IActionResult insert ([FromBody] TestPop criteria) {
+      return Created ("", criteria);
+    }
+
+    [HttpPut]
+
+    public IActionResult update ([FromBody] TestPop criteria) {
+      return Ok (criteria);
+    }
+
+    [HttpDelete]
+    public IActionResult delete () {
+      return NoContent ();
+    }
+
+    [HttpPut ("test-exception")]
+    public IActionResult test_exception () {
+      throw new System.Exception ("Hello from exepction !!!");
+    }
   }
+
 }
