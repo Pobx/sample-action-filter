@@ -24,9 +24,9 @@ namespace sample_action_filter {
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices (IServiceCollection services) {
       services.AddControllers (options => {
-          options.Filters.Add (typeof (ValidateModelAttribute), order : 0);
-          options.Filters.Add (typeof (HandleExceptionAttribute), order : 1);
-          options.Filters.Add (typeof (ResponseModelAttribute), order : 2);
+          options.Filters.Add (typeof (ValidateModelAttribute), int.MinValue);
+          options.Filters.Add (typeof (HandleExceptionAttribute));
+          options.Filters.Add (typeof (ResponseModelAttribute));
         })
         .AddNewtonsoftJson (options => {
           options.SerializerSettings.ContractResolver = new DefaultContractResolver ();

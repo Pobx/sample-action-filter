@@ -18,7 +18,7 @@ namespace sample_action_filter.Filters {
         context.Result = new CreatedResult ("", response);
       }
 
-      result.Value = response;
+      // result.Value = response;
       Console.WriteLine ("Hello from ResponseModelAttribute");
     }
 

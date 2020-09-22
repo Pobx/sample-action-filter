@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace sample_action_filter.Filters {
   public class ValidateModelAttribute : IActionFilter {
     public void OnActionExecuted (ActionExecutedContext context) {
-      throw new System.NotImplementedException ();
+
     }
 
     public void OnActionExecuting (ActionExecutingContext context) {
@@ -20,5 +20,6 @@ namespace sample_action_filter.Filters {
       Console.WriteLine ("Hello from ValidateModelAttribute");
 
     }
+
   }
 }
