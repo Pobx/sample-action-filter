@@ -10,7 +10,7 @@ namespace sample_action_filter.Filters {
 
       var result = context.Result as ObjectResult;
       var response = new MyResponse<object> ();
-      response.Entitties = result?.Value;
+      response.Entities = result?.Value;
 
       if (context.ModelState.IsValid == true && context.Result is OkObjectResult) {
         context.Result = new OkObjectResult (response);

@@ -15,6 +15,6 @@ namespace sample_action_filter {
   public class MyResponse<T> {
     public DateTime CurrentDateTime { get; } = DateTime.UtcNow;
     public List<string> ErrorsMessage { get; set; } = new List<string> ();
-    public T Entitties { get; set; }
+    public T Entities { get; set; }
   }
 }
