@@ -12,9 +12,9 @@ namespace sample_action_filter.Filters {
       var response = new MyResponse<object> ();
       response.Entities = result?.Value;
 
-      if (context.ModelState.IsValid == true && context.Result is OkObjectResult) {
+      if (context.ModelState.IsValid && context.Result is OkObjectResult) {
         context.Result = new OkObjectResult (response);
-      } else if (context.ModelState.IsValid == true && context.Result is CreatedResult) {
+      } else if (context.ModelState.IsValid && context.Result is CreatedResult) {
         context.Result = new CreatedResult ("", response);
       }
     }
