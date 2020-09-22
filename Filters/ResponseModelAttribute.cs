@@ -19,6 +19,7 @@ namespace sample_action_filter.Filters {
       }
 
       result.Value = response;
+      Console.WriteLine ("Hello from ResponseModelAttribute");
     }
 
   }

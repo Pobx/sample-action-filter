@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using sample_action_filter.Filters;
 
 namespace sample_action_filter.Controllers {
   [ApiController]
@@ -43,6 +44,7 @@ namespace sample_action_filter.Controllers {
     }
 
     [HttpPost]
+    [ServiceFilter (typeof (ValidateModelAttribute))]
     public IActionResult insert ([FromBody] TestPop criteria) {
       return Created ("", criteria);
     }
