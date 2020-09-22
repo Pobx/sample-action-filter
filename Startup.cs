@@ -26,6 +26,7 @@ namespace sample_action_filter {
       services.AddControllers (options => {
           options.Filters.Add (typeof (ValidateModelAttribute), order : 0);
           options.Filters.Add (typeof (HandleExceptionAttribute), order : 1);
+          options.Filters.Add (typeof (ResponseModelAttribute), order : 2);
         })
         .AddNewtonsoftJson (options => {
           options.SerializerSettings.ContractResolver = new DefaultContractResolver ();
