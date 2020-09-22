@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using sample_action_filter.Filters;
 
 namespace sample_action_filter.Controllers {
   [ApiController]
@@ -44,24 +43,23 @@ namespace sample_action_filter.Controllers {
     }
 
     [HttpPost]
-    [ServiceFilter (typeof (ValidateModelAttribute))]
-    public IActionResult insert ([FromBody] TestPop criteria) {
+    public ActionResult<TestPop> insert ([FromBody] TestPop criteria) {
       return Created ("", criteria);
     }
 
     [HttpPut]
 
-    public IActionResult update ([FromBody] TestPop criteria) {
+    public ActionResult<TestPop> update ([FromBody] TestPop criteria) {
       return Ok (criteria);
     }
 
     [HttpDelete]
-    public IActionResult delete () {
+    public ActionResult delete () {
       return NoContent ();
     }
 
     [HttpPut ("test-exception")]
-    public IActionResult test_exception () {
+    public ActionResult test_exception () {
       throw new System.Exception ("Hello from exepction !!!");
     }
   }
