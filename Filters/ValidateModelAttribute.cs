@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -15,6 +16,9 @@ namespace sample_action_filter.Filters {
         response.ErrorsMessage = errorMessages.ToList ();
         context.Result = new BadRequestObjectResult (response);
       }
+
+      Console.WriteLine ("Hello from ValidateModelAttribute");
+
     }
   }
 }

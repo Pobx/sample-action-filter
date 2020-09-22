@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -13,6 +14,8 @@ namespace sample_action_filter.Filters {
       };
 
       context.ExceptionHandled = true;
+
+      Console.WriteLine ("Hello from HandleExceptionAttribute");
     }
   }
 }
