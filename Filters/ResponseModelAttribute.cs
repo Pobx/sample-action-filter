@@ -10,13 +10,15 @@ namespace sample_action_filter.Filters {
 
       var result = context.Result as ObjectResult;
       var response = new MyResponse<object> ();
-      response.Entities = result.Value;
+      response.Entities = result?.Value;
 
-      if (context.ModelState.IsValid && context.Result is OkObjectResult) {
+      if (context.ModelState.IsValid && result is OkObjectResult) {
         context.Result = new OkObjectResult (response);
-      } else if (context.ModelState.IsValid && context.Result is CreatedResult) {
+      } else if (context.ModelState.IsValid && result is CreatedResult) {
         context.Result = new CreatedResult ("", response);
       }
+
+      result.Value = response;
     }
 
   }
