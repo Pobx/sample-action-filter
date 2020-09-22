@@ -29,9 +29,8 @@ namespace sample_action_filter.Controllers {
     }
 
     [HttpGet]
-    public IActionResult Get () {
+    public ActionResult<MyResponse<IEnumerable<WeatherForecast>>> Get () {
       var rng = new Random ();
-      var response = new MyResponse<IEnumerable<WeatherForecast>> ();
 
       var result = Enumerable.Range (1, 5).Select (index => new WeatherForecast {
         Date = DateTime.Now.AddDays (index),
@@ -39,9 +38,7 @@ namespace sample_action_filter.Controllers {
           Summary = Summaries[rng.Next (Summaries.Length)]
       }).ToList ();
 
-      response.Entitties = result;
-
-      return Ok (response);
+      return Ok (result);
 
     }
 
