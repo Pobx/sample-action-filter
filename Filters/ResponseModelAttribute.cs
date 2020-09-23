@@ -10,11 +10,11 @@ namespace sample_action_filter.Filters {
 
       var result = context.Result as ObjectResult;
       var response = new MyResponse<object> ();
-      response.Entities = result?.Value;
+      response.Entities = context.ModelState.IsValid? result?.Value : null;
 
       if (!context.ModelState.IsValid) {
-        response.Entities = null;
-        response.ErrorsMessage = result.Value as List<string>;
+        var errorMessages = context.ModelState.Values.SelectMany (value => value.Errors).Select (value => value.ErrorMessage);
+        response.ErrorsMessage = errorMessages.ToList ();
         context.Result = new BadRequestObjectResult (response);
       } else if (context.ModelState.IsValid && result is OkObjectResult) {
         context.Result = new OkObjectResult (response);
