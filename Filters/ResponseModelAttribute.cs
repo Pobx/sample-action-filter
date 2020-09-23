@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace sample_action_filter.Filters {
   public class ResponseModelAttribute : ResultFilterAttribute {
     public override void OnResultExecuting (ResultExecutingContext context) {
-      if (context.Result is CreatedResult) {
-        Console.WriteLine ("It's OkObjectResult");
-      }
 
       var response = new MyResponse<object> ();
       response.Entities = null;
